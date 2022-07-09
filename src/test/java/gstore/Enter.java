@@ -4,32 +4,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import java.util.concurrent.TimeUnit;
 
 public class Enter {
     public WebDriver driver;
     public Enter(WebDriver driver){
         PageFactory.initElements(driver,this);
         this.driver=driver;
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-public void clickLogin(){
+public void clickLogin() throws InterruptedException {
     WebElement loginBtn = driver.findElement(By.xpath("//a[@class='userbar__button __active']"));
     loginBtn.click();
 }
-public void login(String lg){
+public void login(String lg) throws InterruptedException {
     WebElement enterLogin = driver.findElement(By.xpath("//*[@id=\"login_form_id\"]/dl/dd[1]/input"));
     enterLogin.sendKeys(lg);
 }
-public void password(String ps){
+public void password(String ps) throws InterruptedException {
     WebElement enterPassword = driver.findElement(By.xpath("//*[@id=\"login_form_id\"]/dl/dd[2]/input"));
     enterPassword.sendKeys(ps);
 }
-public void checkError(String errorXpass){
+public void checkError(String errorXpass) throws InterruptedException {
     WebElement enterKeys =driver.findElement(By.xpath("//*[@id=\"login_form_id\"]/dl/dd[3]/span[1]/input"));
    enterKeys.click();
     driver.findElement(By.xpath(errorXpass)).isDisplayed();
+
+
 }
+
 }
 
